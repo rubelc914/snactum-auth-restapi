@@ -1,0 +1,39 @@
+<?php
+
+namespace App\Traits;
+
+use Illuminate\Http\JsonResponse;
+
+trait responseTraits{
+
+    /**
+     * sendError
+     *
+     * @param  mixed $error
+     * @param  mixed $errorMessage
+     * @param  mixed $code
+     * @return JsonResponse
+     */
+    public function sendError($error,$errorMessage=[],$code=404):JsonResponse
+    {
+        $response =[
+            'success' => false,
+            'message' => $error,
+        ];
+        if(!empty($errorMessage)){
+            $response['data'] = $errorMessage;
+            }
+        return response()->json($response,$code);
+    }
+
+
+    public function sendResponse($result,$message)
+    {
+        $response =[
+            'success' => true,
+            'data' => $result,
+            'message' => $message
+        ];
+        return response()->json($response,200);
+    }
+}
