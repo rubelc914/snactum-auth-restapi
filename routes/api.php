@@ -24,7 +24,8 @@ use Illuminate\Support\Facades\Route;
 Route::post('register',[RegisterController::class,'register']);
 Route::post('login',[RegisterController::class,'login']);
 
-Route::group(['middleware'=>'auth'], function(){
+Route::group(['middleware'=>'auth:sanctum'], function(){
 
     Route::resource('products',ProductController::class);
+    Route::get('logout',[RegisterController::class,'logout']);
 });

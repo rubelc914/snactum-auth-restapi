@@ -27,7 +27,14 @@ trait responseTraits{
     }
 
 
-    public function sendResponse($result,$message)
+    /**
+     * sendResponse
+     *
+     * @param  mixed $result
+     * @param  mixed $message
+     * @return JsonResponse
+     */
+    public function sendResponse($result,$message):JsonResponse
     {
         $response =[
             'success' => true,
